@@ -1,6 +1,7 @@
-<p align="center"><img src="assets/aivonex_logo.png" width="140" alt="AIVONEX logo"></p>
+
 
 # PrivSynth: Privacy Aware Synthetic Data Generation and Evaluation Platform
+[screen-capture (12).webm](https://github.com/user-attachments/assets/b9a0ed7d-f2e5-4ccd-a264-1eae92d32603)
 
 A generative AI platform that produces synthetic tabular datasets for research and evaluates
 their statistical similarity, usefulness for machine learning, and privacy risk.
