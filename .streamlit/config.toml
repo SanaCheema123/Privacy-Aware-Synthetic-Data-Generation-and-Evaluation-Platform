@@ -1,0 +1,17 @@
+[theme]
+base = "light"
+primaryColor = "#16a34a"
+backgroundColor = "#f4f7f5"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#14211a"
+font = "sans serif"
+
+[server]
+maxUploadSize = 500
+fileWatcherType = "none"     # avoids the harmless torch.classes watcher message
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"

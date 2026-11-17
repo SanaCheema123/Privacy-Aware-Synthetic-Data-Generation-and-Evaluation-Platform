@@ -1,0 +1,55 @@
+# PrivSynth: Privacy Aware Synthetic Data Generation and Evaluation Platform
+# AIVONEX SMC PVT LTD
+# All relative paths are resolved from the project root folder.
+
+project:
+  name: PrivSynth
+  random_seed: 42
+  logo_path: assets/aivonex_logo.png
+
+data:
+  input_csv: data/raw/sample_clinical.csv
+  target_column: outcome          # column used for class balancing and downstream ML
+  holdout_size: 0.25              # real rows kept aside, never shown to generators
+  max_categories: 30              # text columns with more unique values are treated as free text and dropped
+  drop_columns: []                # columns to remove before training (IDs, names, emails ...)
+
+generators:
+  enabled: [gaussian_copula, ctgan, tvae, tabddpm]
+  gaussian_copula:
+    default_distribution: beta
+  ctgan:
+    epochs: 300
+    batch_size: 500
+    pac: 10
+  tvae:
+    epochs: 300
+    batch_size: 500
+  tabddpm:
+    steps: 4000                   # training iterations
+    num_timesteps: 500            # diffusion steps
+    hidden_dim: 512
+    num_layers: 4
+    batch_size: 512
+    lr: 0.001
+    dropout: 0.0
+
+imbalance:
+  # none      : keep the real class distribution
+  # balance   : equal number of rows for every class
+  # custom    : use custom_ratios below (fractions that sum to 1)
+  strategy: none
+  num_rows: null                  # null means same size as real training data
+  custom_ratios: {}
+
+evaluation:
+  utility_models: [logistic_regression, random_forest, gradient_boosting]
+  max_rows_for_privacy: 5000      # subsample for distance based metrics (speed)
+  figure_max_columns: 12          # columns shown in distribution plots
+
+outputs:
+  synthetic_dir: data/synthetic
+  figures_dir: outputs/figures
+  reports_dir: outputs/reports
+  models_dir: outputs/models
+  logs_dir: outputs/logs

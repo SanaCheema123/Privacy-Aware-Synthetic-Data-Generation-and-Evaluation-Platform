@@ -1,0 +1,56 @@
+PrivSynth project test · 2026-11-16 16:10
+Python 3.11.9 · D:\November projects\PrivSynth_Platform (1)\PrivSynth_Platform\.venv\Scripts\python.exe
+
+=== 1. Environment check ===
+Python 3.11.9 at D:\November projects\PrivSynth_Platform (1)\PrivSynth_Platform\.venv\Scripts\python.exe
+
+  OK       numpy         1.26.4
+  OK       pandas        2.2.3
+  OK       scipy         1.14.1
+  OK       scikit-learn  1.5.2
+  OK       matplotlib    3.9.2
+  OK       torch         2.5.1+cpu
+  OK       sdv           1.17.4
+  OK       streamlit     1.40.2
+  OK       fastapi       0.115.6
+  OK       pytest        8.3.4
+
+All packages load correctly.
+[GREEN] Packages load  
+
+=== 2. Unit tests ===
+........                                                                 [100%]
+8 passed in 12.44s
+[GREEN] Unit tests  8 passed in 12.44s
+
+=== 3. Dashboard and API import ===
+[GREEN] Dashboard and API code  
+
+=== 4. Quick pipeline on test datasets ===
+
+--- test_loan_approval.csv: 3000 rows, target 'approved', strategy 'balance' ---
+      generator  fidelity_score  utility_score  privacy_score  detection_auc  mia_auc privacy_risk  train_seconds  overall_score
+        TabDDPM           0.786          0.976          0.997          0.771    0.500          low          9.817          0.916
+Gaussian Copula           0.825          0.806          0.987          0.728    0.506          low          1.799          0.867
+          CTGAN           0.671          0.767          0.977          0.914    0.495          low         14.291          0.796
+           TVAE           0.519            NaN          0.564          0.999    0.499         high          2.785          0.540
+report: D:\November projects\PrivSynth_Platform (1)\PrivSynth_Platform\outputs\reports\run_20261116_161119\evaluation_report.html
+[GREEN] Pipeline test_loan_approval.csv  best TabDDPM (0.916) in 83s
+
+--- test_student_performance.csv: 2400 rows, target 'grade', strategy 'none' ---
+      generator  fidelity_score  utility_score  privacy_score  detection_auc  mia_auc privacy_risk  train_seconds  overall_score
+        TabDDPM           0.960          0.988          0.944          0.543    0.514          low         10.413          0.965
+Gaussian Copula           0.881          0.548          0.992          0.657    0.499          low          0.593          0.798
+          CTGAN           0.678          0.528          0.984          0.892    0.484          low          3.303          0.717
+           TVAE           0.566          0.430          0.894          0.978    0.510       medium          2.067          0.617
+report: D:\November projects\PrivSynth_Platform (1)\PrivSynth_Platform\outputs\reports\run_20261116_161242\evaluation_report.html
+[GREEN] Pipeline test_student_performance.csv  best TabDDPM (0.965) in 62s
+
+=== SUMMARY ===
+GREEN  Packages load                                 
+GREEN  Unit tests                                    8 passed in 12.44s
+GREEN  Dashboard and API code                        
+GREEN  Pipeline test_loan_approval.csv               best TabDDPM (0.916) in 83s
+GREEN  Pipeline test_student_performance.csv         best TabDDPM (0.965) in 62s
+
+ALL CHECKS PASSED

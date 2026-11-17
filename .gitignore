@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# generated outputs (keep folders, ignore run results)
+data/synthetic/run_*/
+outputs/figures/run_*/
+outputs/reports/run_*/
+outputs/models/run_*/
+outputs/logs/*.log
+
+# real datasets may contain personal data, never commit them
+data/raw/*
+!data/raw/README.md
+!data/raw/sample_clinical.csv
